@@ -1,0 +1,6 @@
+This a C version of code published in Ray Tracing in One Weekend by Peter Shirley (available at https://raytracing.github.io/books/RayTracingInOneWeekend.html)
+
+This version features realtime rendering using GTK+ 3.0 library.
+
+Version 0.1
+Finished chapters 1 throug 6.
