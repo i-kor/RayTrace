@@ -2,5 +2,14 @@ This a C version of code published in Ray Tracing in One Weekend by Peter Shirle
 
 This version features realtime rendering using GTK+ 3.0 library.
 
+Version 0.2
+Finished chapter 7. Antialiasing.
+Added camera.c and camera.h. Moved all camera/viewport operations here.
+Changed functions that used GdkPixbuf pointer argument to use Camera struct pointer instead
+Added utility.c and utility.c. Moved some commonly used functions here.
+Added image scaling with a window.
+Changed press callback function to translate mouse coords to picture coords.
+Added range checks in get_pixel, put_pixel.
+
 Version 0.1
-Finished chapters 1 throug 6.
+Finished chapters 1 through 6.

@@ -4,16 +4,16 @@
 #include "vec.h"
 
 struct Ray {
-    struct Vec orig;
-    struct Vec dir;
+    struct Vec orig; // Origin of the ray
+    struct Vec dir; // Vector direction of the ray
 };
 
 struct HittableList {
-    int size;
+    int size; // Number of objects in the list
     struct Hittable {
-        struct Vec center;
-        double radius;
-    } *obj;
+        struct Vec center; // Center of the sphere
+        double radius; // Radius of the sphere
+    } *obj; // Array of objects
 };
 
 struct HitRecord {

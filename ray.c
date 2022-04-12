@@ -3,11 +3,8 @@
 #include <stdio.h>
 #include <math.h>
 
-struct HittableList obj_list = {0, NULL};
-
-const double infinity = INFINITY;
-const double pi = 3.1415926535897932385;
-
+extern double infinity;
+struct HittableList obj_list = {0, NULL}; // A list of objects in the world
 
 // Create a ray
 struct Ray Ray(struct Vec origin, struct Vec direction)
@@ -41,7 +38,7 @@ struct Vec RayColor(const struct Ray ray)
                           VecIncr(Vec(127.0, 178.0, 255.0), blend));
 }
 
-// 
+// Check if ray hits a sphere
 struct HitRecord *RayHitSphere(const struct Vec center, double radius, const struct Ray ray,
                  double min, double max)
 {
@@ -72,12 +69,14 @@ struct HitRecord *RayHitSphere(const struct Vec center, double radius, const str
     return rec;
 }
 
+// Check and set normal for inside surface ray hit and outside surface ray hit.
 void RecSetFaceNormal(struct HitRecord *rec, const struct Ray ray, const struct Vec outward_normal)
 {
     rec->front_face = VecDot(ray.dir, outward_normal) < 0;
     rec->normal = rec->front_face ? outward_normal :VecInv(outward_normal);
 }
 
+// Check all spheres in the world obj_list for hits by a given ray
 struct HitRecord *RayListHit(const struct Ray ray, double min, double max)
 {
     struct HitRecord *rec = NULL;
@@ -96,6 +95,7 @@ struct HitRecord *RayListHit(const struct Ray ray, double min, double max)
     return rec;
 }
 
+// Add a sphere to the world obj_list
 int HittableAdd(struct Vec center, double radius)
 {
     void *tmp = realloc(obj_list.obj, sizeof(struct Hittable) * (obj_list.size + 1));
@@ -110,7 +110,3 @@ int HittableAdd(struct Vec center, double radius)
     return 0;
 }
 
-double degrees_to_radians(double degrees)
-{
-    return degrees * pi / 180.0;
-}

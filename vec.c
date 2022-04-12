@@ -66,7 +66,7 @@ struct Vec VecSub (const struct Vec left, const struct Vec right)
 }
 
 // Multiplies two vectors
-struct Vec vec3_mult (const struct Vec left, const struct Vec right)
+struct Vec VecMult (const struct Vec left, const struct Vec right)
 {
     return Vec(left.e[0]*right.e[0],
                 left.e[1]*right.e[1],
